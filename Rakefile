@@ -34,3 +34,28 @@ namespace :build do
   task :all => ["clean", "haml", "sass", "js"]
 
 end
+
+namespace :droid do
+
+  desc "Clean assets for Android"
+  task :clean do
+    sh "rm -rf droid/assets/www/*"
+  end
+
+  desc "Builds and copies the assets"
+  task :assets => ["clean", "build:all"] do
+    sh "cp -r build/* droid/assets/www"
+  end
+
+  desc "Builds the complete Android application"
+  task :build => ["assets"] do
+    cd "droid" do
+      sh "ant clean debug"
+    end
+  end
+
+  desc "Deploy to a running device/emulator"
+  task :deploy => ["build"] do
+    sh "adb install -r droid/bin/*.apk"
+  end
+end
