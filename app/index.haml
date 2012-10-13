@@ -1,0 +1,11 @@
+!!!
+
+%head
+  %title Photospike
+
+  %script{type: 'text/javascript', src: 'js/lib/cordova-2.1.0.js'}
+  %script{type: 'text/javascript', src: 'js/camera.js'}
+
+%body
+  %button{onclick: 'capturePhoto();'}Capture Photo
+  %img{style: "display:none;width:60px;height:60px;", id: 'smallImage', src: ''}
