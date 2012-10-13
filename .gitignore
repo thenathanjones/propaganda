@@ -14,6 +14,11 @@
 
 /tmp
 
+.sass-cache
+app/**/*.css
+
+build
+
 /droid/assets/www
 /droid/bin
 /droid/gen
