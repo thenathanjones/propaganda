@@ -15,7 +15,7 @@
 /tmp
 
 .sass-cache
-app/**/*.css
+src/**/*.css
 
 build
 

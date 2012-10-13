@@ -9,25 +9,26 @@ namespace :build do
   directory "build/styles"
   directory "build/js"
 
-  desc "Clean the build directory"
+  desc "Clean the temporary artifacts"
   task :clean do
     sh "rm -rf build/*"
+    sh "rm -rf src/**/*.css"
   end
 
   desc "Compile HAML and move to the build directory"
   task :haml => 'build' do
-    sh "haml app/index.haml build/index.html"
+    sh "haml src/index.haml build/index.html"
   end
 
   desc "Compile SASS and move to build directory"
   task :sass => "build/styles" do
-    sh "sass --update app/styles"
-    sh "cp -r app/styles/*.css build/styles"
+    sh "sass --update src/styles"
+    sh "cp -r src/styles/*.css build/styles"
   end
 
   desc "Move js to build directory"
   task :js => "build/js" do
-    sh "cp -r app/js/*.js build/js"
+    sh "cp -r src/js/* build/js"
   end
 
   task :all => ["clean", "haml", "sass", "js"]
