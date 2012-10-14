@@ -1,5 +1,11 @@
+%script{type: 'text/html', id: 'main'}
+  = render_partial 'common'
+  = render_partial 'photos'
+
 %script{type: 'text/html', id: 'interior'}
   = render_partial 'interior'
+  = render_partial 'photos'
 
 %script{type: 'text/html', id: 'lounge'}
   = render_partial 'interior'
+  = render_partial 'photos'
