@@ -10,6 +10,8 @@ task :default => ["build:all"]
 namespace :build do
 
   directory "build/styles"
+  directory "build/fonts"
+  directory "build/images"
   directory "build/js"
 
   desc "Clean the temporary artifacts"
@@ -29,12 +31,22 @@ namespace :build do
     sh "cp -r src/styles/*.css build/styles"
   end
 
+  desc "Copy the fonts to the build directory"
+  task :fonts => "build/fonts" do
+    sh "cp -r src/fonts/* build/fonts"
+  end
+
+  desc "Copy the images to the build directory"
+  task :images => "build/images" do
+    sh "cp -r src/images/* build/images"
+  end
+
   desc "Move js to build directory"
   task :js => "build/js" do
     sh "cp -r src/js/* build/js"
   end
 
-  task :all => ["clean", "haml", "sass", "js"]
+  task :all => ["clean", "haml", "sass", "fonts", "images", "js"]
 
 end
 
