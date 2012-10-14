@@ -1,5 +1,103 @@
-#photos {
-  img {
-    width: 23%;
+@import 'fonts';
+
+$footerHeight: 50px;
+
+body {
+  font-family: 'Helvetica Neue', 'Helvetica';
+
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+html, body {
+  height: 100%;
+}
+
+#container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#navigation {
+  position: fixed;
+  bottom: 0;
+  height: $footerHeight;
+  width: 100%;
+}
+
+#header {
+  .room, .camera {
+    display: inline-block;
+  }
+
+  .camera {
+    width: 30px;
+    height: 30px;
+    background-image: url('../images/icon-camera.jpeg');
+    background-size: 100%;
+    cursor: pointer;
+
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: 'PricedownRegular';
+  font-weight: normal;
+  margin: 5px 0px;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 40px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+label {
+  font-size: 40px;
+  font-family: 'PricedownRegular';
+  font-weight: normal;
+}
+
+label {
+  display: block;
+}
+
+textarea {
+  width: 98%;
+}
+
+.photos {
+  margin: 10px 5px;
+
+  .photo {
+    height: 150px;
+  }
+}
+
+#navigation {
+  text-align: center;
+  background-color: black;
+  color: white;
+
+  .previous, .next {
+    display: inline-block;
+    width: 25%;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
