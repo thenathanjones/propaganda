@@ -10,7 +10,9 @@
   %script{type: 'text/javascript', src: 'js/viewmodels.js'}
   %script{type: 'text/javascript', src: 'js/main.js'}
 
+  %link{rel: 'stylesheet', type: 'text/css', href: 'styles/application.css'}
+
 %body
   #photos{data: {bind: "foreach: photos"}}
-    %img{style: "width:150px;height:150px;", data: {bind: "attr: {src: uri}"}}
+    %img{data: {bind: "attr: {src: uri}"}}
   %button{data: {bind: "click: capture"}} Capture Photo
