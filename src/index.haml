@@ -4,8 +4,13 @@
   %title Photospike
 
   %script{type: 'text/javascript', src: 'js/lib/cordova-2.1.0.js'}
+  %script{type: 'text/javascript', src: 'js/lib/knockout-2.1.0.js'}
+  %script{type: 'text/javascript', src: 'js/lib/jquery-1.8.2.min.js'}
   %script{type: 'text/javascript', src: 'js/camera.js'}
+  %script{type: 'text/javascript', src: 'js/viewmodels.js'}
+  %script{type: 'text/javascript', src: 'js/main.js'}
 
 %body
-  %button{onclick: 'capturePhoto();'}Capture Photo
-  %img{style: "display:none;width:60px;height:60px;", id: 'smallImage', src: ''}
+  #photos{data: {bind: "foreach: photos"}}
+    %img{style: "width:150px;height:150px;", data: {bind: "attr: {src: uri}"}}
+  %button{data: {bind: "click: capture"}} Capture Photo
