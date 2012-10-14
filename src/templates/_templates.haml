@@ -9,3 +9,11 @@
 %script{type: 'text/html', id: 'lounge'}
   = render_partial 'interior'
   = render_partial 'photos'
+
+%script{type: 'text/html', id: 'wherenext'}
+  #header
+    %h2{class: 'room-type', data: {bind: 'text: type'}}
+  %h3 add room
+  #actions{data: {bind: 'foreach: rooms'}}
+    %a{class: 'new-room', data: {bind: 'click: $parent.addRoom'}}
+      %h4{data: {bind: 'text: $data'}}

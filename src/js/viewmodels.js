@@ -80,6 +80,36 @@ function LoungeViewModel() {
   }
 }
 
+function WhereNextViewModel(navigation) {
+  var self = this;
+
+  self.type = "where next?";
+  self.template = "wherenext";
+
+  self.rooms = ["Entry", "Lounge"];
+
+  self.addRoom = function(roomName) {
+    var room;
+
+    switch(roomName) {
+      case "Entry":
+        room = new EntryViewModel();
+        break;
+      case "Lounge": 
+        room = new LoungeViewModel();
+        break;
+    }
+
+    var lastPage = navigation.pages.pop();
+    navigation.pages.push(room);
+    navigation.pages.push(lastPage);
+
+    navigation.goToPage(room);
+  }
+
+  return this;
+}
+
 function PhotoViewModel(uri) {
   var self = this;
 
