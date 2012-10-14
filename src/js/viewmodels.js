@@ -1,7 +1,10 @@
 function MainViewModel() {
   var self = this;
 
- self.pages = ko.observableArray([this, new EntryViewModel(), new LoungeViewModel()])
+  self.type = "PCR";
+  self.template = "main";
+
+  self.pages = ko.observableArray([this, new EntryViewModel(), new LoungeViewModel()])
 
   self.currentPage = ko.observable(self.pages()[0]);
 
@@ -45,7 +48,6 @@ function EntryViewModel() {
   self.type = "entry";
   self.template = "interior";
 
-  // self.prototype = InteriorViewModel();
   self.walls = ko.observable();
 
   self.photos = ko.observableArray();
@@ -66,8 +68,6 @@ function LoungeViewModel() {
   self.template = "lounge";
 
   self.walls = ko.observable(); 
-
-  // self.prototype = InteriorViewModel();
 
   self.photos = ko.observableArray();
 
