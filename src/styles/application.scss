@@ -25,8 +25,17 @@ html, body {
   width: 100%;
 }
 
+.new-room {
+  display: block;
+  height: 40px;
+  border: 1px solid black;
+  margin: 5px;
+
+  text-align: center;
+}
+
 #header {
-  .room, .camera {
+  .room-type, .camera {
     display: inline-block;
   }
 
@@ -60,6 +69,10 @@ h3 {
   font-size: 40px;
 }
 
+h4 {
+  font-size: 30px;
+}
+
 h6 {
   font-size: 12px;
 }
@@ -72,6 +85,11 @@ label {
 
 label {
   display: block;
+  margin-top: 10px;
+}
+
+.condition {
+  width: 98%;
 }
 
 textarea {

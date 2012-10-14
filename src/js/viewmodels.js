@@ -1,10 +1,11 @@
 function MainViewModel() {
   var self = this;
 
-  self.type = "PCR";
+  self.type = "PCR helper";
   self.template = "main";
 
-  self.pages = ko.observableArray([this, new EntryViewModel(), new LoungeViewModel()])
+  self.pages = ko.observableArray([this]);
+  self.pages.push(new WhereNextViewModel(this));
 
   self.currentPage = ko.observable(self.pages()[0]);
 
@@ -15,6 +16,10 @@ function MainViewModel() {
   var goToIndex = function(index) {
     var nextPage = self.pages()[index];
     self.currentPage(nextPage);
+  }
+
+  self.goToPage = function(page) {
+    self.currentPage(page);
   }
 
   self.previousPage = function() {
@@ -28,6 +33,8 @@ function MainViewModel() {
   self.templateSelector = function(page) {
     return page ? page.template : 'blank';
   }
+
+  self.generalCondition = ["Good", "Average", "Poor"]
 
   self.photos = ko.observableArray();
 
@@ -50,6 +57,16 @@ function EntryViewModel() {
 
   self.walls = ko.observable();
 
+  self.ceilings = ko.observable();
+
+  self.floors = ko.observable();
+
+  self.windows = ko.observable();
+
+  self.electrical = ko.observable();
+
+  self.comments = ko.observable();
+
   self.photos = ko.observableArray();
 
   var pictureReturned = function(uri) {
@@ -67,7 +84,19 @@ function LoungeViewModel() {
   self.type = "lounge";
   self.template = "lounge";
 
+  self.generalCondition = ["Good", "Average", "Poor"]
+
   self.walls = ko.observable(); 
+
+  self.ceilings = ko.observable();
+
+  self.floors = ko.observable();
+
+  self.windows = ko.observable();
+
+  self.electrical = ko.observable();
+
+  self.comments = ko.observable();
 
   self.photos = ko.observableArray();
 
@@ -114,6 +143,8 @@ function PhotoViewModel(uri) {
   var self = this;
 
   self.uri = ko.observable(uri);
+
+  self.comment = ko.observable();
 
   return this;
 }

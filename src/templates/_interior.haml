@@ -1,12 +1,15 @@
 = render_partial 'common'
 
 %label Walls
-%textarea{data: {bind: 'value: walls'}}
-/ %label Ceilings
-/ %textarea{data: {bind: 'value: ceilings'}}
-/ %label Floor Coverings
-/ %textarea{data: {bind: 'value: floors'}}
-/ %label Windows
-/ %textarea{data: {bind: 'value: windows'}}
-/ %label Electrical Fittings
-/ %textarea{data: {bind: 'value: electrical'}}
+%select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: walls'}}
+%label Ceilings
+%select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: ceilings'}}
+%label Floor Coverings
+%select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: floors'}}
+%label Windows
+%select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: windows'}}
+%label Electrical Fittings
+%select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: electrical'}}
+
+%label General Comments
+%textarea{data: {bind: 'value: comments'}}
