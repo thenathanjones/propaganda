@@ -18,7 +18,5 @@ function capturePhoto(uriCallback) {
 }
 
 function onFail(message) {
-  if (message.indexOf('cancelled') !=- -1) {
-    alert('Failed because: ' + message);
-  }
+  alert('Failed because: ' + message);
 }
