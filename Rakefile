@@ -2,6 +2,9 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
+require './lib/tasks/haml'
+
+
 task :default => ["build:all"]
 
 namespace :build do
@@ -17,7 +20,7 @@ namespace :build do
 
   desc "Compile HAML and move to the build directory"
   task :haml => 'build' do
-    sh "haml src/index.haml build/index.html"
+    HamlSupport::compile "src/index.haml", 'build'
   end
 
   desc "Compile SASS and move to build directory"
