@@ -15,11 +15,8 @@
   = render_partial 'templates'
 
 %body
-  #photos{data: {bind: "foreach: photos"}}
-    %img{data: {bind: "attr: {src: uri}"}}
-  %button{data: {bind: "click: capture"}} Capture Photo
-
-  #currentPage{data: {bind: 'template: {name: templateSelector, data: currentPage}'}}
+  #container
+    #currentPage{data: {bind: 'template: {name: templateSelector, data: currentPage}'}}
 
   #navigation
     .previous{data: {bind: 'click: previousPage, visible: pageIndex() > 0'}, class: 'btn'} <<
