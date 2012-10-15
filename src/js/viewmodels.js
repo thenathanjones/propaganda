@@ -1,3 +1,71 @@
+AVAILABLE_ROOMS = {
+                    'entry': {
+                      type: 'entry',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling','floor','windows', 'electrical', 'comments']
+                    },
+                    'lounge': {
+                      type: 'lounge',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'bedroom': {
+                      type: 'bedroom',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'games room': {
+                      type: 'games room',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'store room': {
+                      type: 'store room',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'garage': {
+                      type: 'garage',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'dining': {
+                      type: 'dining',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'family room': {
+                      type: 'family room',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'kitchen': {
+                      type: 'kitchen',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'bathroom': {
+                      type: 'bathroom',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'family room': {
+                      type: 'family room',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'laundry': {
+                      type: 'laundry',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    },
+                    'toilet': {
+                      type: 'toilet',
+                      template: 'interior',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                    }
+                 }
+
 function MainViewModel() {
   var self = this;
 
@@ -30,11 +98,17 @@ function MainViewModel() {
     goToIndex(self.pageIndex() + 1);
   }
 
+  self.addPage = function(room, andGo) {
+    self.pages.splice(self.pages().length - 1, 0, room);
+
+    if (andGo) { self.currentPage(room); }
+  }
+
   self.templateSelector = function(page) {
     return page ? page.template : 'blank';
   }
 
-  self.generalCondition = ["Good", "Average", "Poor"]
+  self.generalCondition = ["Good", "Average", "Poor", "N/A"]
 
   self.photos = ko.observableArray();
 
@@ -49,23 +123,15 @@ function MainViewModel() {
   return this;
 }
 
-function EntryViewModel() {
+function RoomViewModel(roomDescription) {
   var self = this;
 
-  self.type = "entry";
-  self.template = "interior";
+  self.type = roomDescription.type;
+  self.template = roomDescription.template;
 
-  self.walls = ko.observable();
-
-  self.ceilings = ko.observable();
-
-  self.floors = ko.observable();
-
-  self.windows = ko.observable();
-
-  self.electrical = ko.observable();
-
-  self.comments = ko.observable();
+  roomDescription.attributes.forEach(function(attribute) {
+    self[attribute] = ko.observable();
+  });
 
   self.photos = ko.observableArray();
 
@@ -76,66 +142,8 @@ function EntryViewModel() {
   self.capture = function() {
     capturePhoto(pictureReturned);
   }
-}
 
-function LoungeViewModel() {
-  var self = this;
-
-  self.type = "lounge";
-  self.template = "interior";
-
-  self.generalCondition = ["Good", "Average", "Poor"]
-
-  self.walls = ko.observable(); 
-
-  self.ceilings = ko.observable();
-
-  self.floors = ko.observable();
-
-  self.windows = ko.observable();
-
-  self.electrical = ko.observable();
-
-  self.comments = ko.observable();
-
-  self.photos = ko.observableArray();
-
-  var pictureReturned = function(uri) {
-    self.photos.push(new PhotoViewModel(uri));
-  };
-
-  self.capture = function() {
-    capturePhoto(pictureReturned);
-  }
-}
-
-function BedroomViewModel() {
-  var self = this;
-
-  self.type = "bedroom";
-  self.template = "interior";
-
-  self.walls = ko.observable();
-
-  self.ceilings = ko.observable();
-
-  self.floors = ko.observable();
-
-  self.windows = ko.observable();
-
-  self.electrical = ko.observable();
-
-  self.comments = ko.observable();
-
-  self.photos = ko.observableArray();
-
-  var pictureReturned = function(uri) {
-    self.photos.push(new PhotoViewModel(uri));
-  };
-
-  self.capture = function() {
-    capturePhoto(pictureReturned);
-  }
+  return this;
 }
 
 function WhereNextViewModel(navigation) {
@@ -144,28 +152,15 @@ function WhereNextViewModel(navigation) {
   self.type = "where next?";
   self.template = "wherenext";
 
-  self.rooms = ["Entry", "Lounge", "Bedroom"];
+  self.rooms = [];
+  for(var property in AVAILABLE_ROOMS) {
+    self.rooms.push(property);
+  }
 
   self.addRoom = function(roomName) {
-    var room;
+    var room = new RoomViewModel(AVAILABLE_ROOMS[roomName]);
 
-    switch(roomName) {
-      case "Entry":
-        room = new EntryViewModel();
-        break;
-      case "Lounge": 
-        room = new LoungeViewModel();
-        break;
-      case "Bedroom": 
-        room = new BedroomViewModel();
-        break;
-    }
-
-    var lastPage = navigation.pages.pop();
-    navigation.pages.push(room);
-    navigation.pages.push(lastPage);
-
-    navigation.goToPage(room);
+    navigation.addPage(room, true);
   }
 
   return this;
