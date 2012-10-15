@@ -82,11 +82,40 @@ function LoungeViewModel() {
   var self = this;
 
   self.type = "lounge";
-  self.template = "lounge";
+  self.template = "interior";
 
   self.generalCondition = ["Good", "Average", "Poor"]
 
   self.walls = ko.observable(); 
+
+  self.ceilings = ko.observable();
+
+  self.floors = ko.observable();
+
+  self.windows = ko.observable();
+
+  self.electrical = ko.observable();
+
+  self.comments = ko.observable();
+
+  self.photos = ko.observableArray();
+
+  var pictureReturned = function(uri) {
+    self.photos.push(new PhotoViewModel(uri));
+  };
+
+  self.capture = function() {
+    capturePhoto(pictureReturned);
+  }
+}
+
+function BedroomViewModel() {
+  var self = this;
+
+  self.type = "bedroom";
+  self.template = "interior";
+
+  self.walls = ko.observable();
 
   self.ceilings = ko.observable();
 
@@ -115,7 +144,7 @@ function WhereNextViewModel(navigation) {
   self.type = "where next?";
   self.template = "wherenext";
 
-  self.rooms = ["Entry", "Lounge"];
+  self.rooms = ["Entry", "Lounge", "Bedroom"];
 
   self.addRoom = function(roomName) {
     var room;
@@ -126,6 +155,9 @@ function WhereNextViewModel(navigation) {
         break;
       case "Lounge": 
         room = new LoungeViewModel();
+        break;
+      case "Bedroom": 
+        room = new BedroomViewModel();
         break;
     }
 
