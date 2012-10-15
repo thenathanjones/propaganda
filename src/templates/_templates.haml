@@ -1,7 +1,7 @@
 %script{type: 'text/html', id: 'main'}
   = render_partial 'common'
   .instructions
-    Work through the house adding notes or pictures as required.  Use the camera icon to take pictures associated with each room.
+    Work through each room of the house, adding notes or pictures as required.  Supplement comments with pictures for greater speed via the camera icon.
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'interior'}
@@ -15,7 +15,7 @@
 %script{type: 'text/html', id: 'wherenext'}
   #header
     %h2{class: 'room-type', data: {bind: 'text: type'}}
-  %h3 add room
+  %h3 pick a room...
   #actions{data: {bind: 'foreach: rooms'}}
     %a{class: 'new-room', data: {bind: 'click: $parent.addRoom'}}
       %h4{data: {bind: 'text: $data'}}

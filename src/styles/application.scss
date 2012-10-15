@@ -29,7 +29,10 @@ html, body {
   display: block;
   height: 40px;
   border: 1px solid black;
+  border-radius: 2px;
   margin: 5px;
+
+  cursor: pointer;
 
   text-align: center;
 }
@@ -78,12 +81,10 @@ h6 {
 }
 
 label {
-  font-size: 40px;
+  font-size: 32px;
   font-family: 'PricedownRegular';
   font-weight: normal;
-}
 
-label {
   display: block;
   margin-top: 10px;
 }
@@ -113,6 +114,7 @@ textarea {
   .previous, .next {
     display: inline-block;
     width: 25%;
+    height: 100%;
     margin-left: 30px;
     margin-right: 30px;
     font-size: 30px;
