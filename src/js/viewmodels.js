@@ -69,7 +69,7 @@ AVAILABLE_ROOMS = {
 function MainViewModel() {
   var self = this;
 
-  self.type = "PCR helper";
+  self.type = "propaganda";
   self.template = "main";
 
   self.pages = ko.observableArray([this]);
