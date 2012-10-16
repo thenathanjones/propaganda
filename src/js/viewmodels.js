@@ -93,6 +93,18 @@ function MainViewModel() {
     self.currentPage(page);
   }
 
+  self.swipeLeft = function() {
+    if (self.pageIndex() < self.pages().length - 1) {
+      self.nextPage();
+    }
+  }
+
+  self.swipeRight = function() {
+    if (self.pageIndex() > 0) {
+      self.previousPage();
+    }
+  }
+
   self.previousPage = function() {
     goToIndex(self.pageIndex() - 1);
   }

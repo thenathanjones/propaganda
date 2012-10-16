@@ -10,4 +10,12 @@ $(function() {
   });
 
   ko.applyBindings(viewModel);
+
+  $('body').bind('swipeleft', function() {
+    viewModel.swipeLeft();
+  });
+
+  $('body').bind('swiperight', function() {
+    viewModel.swipeRight();
+  });
 });
