@@ -1,2 +1,2 @@
 .photos{data: {bind: "foreach: photos"}}
-  %img{class: 'photo', data: {bind: "attr: {src: uri}"}}
+  %img.photo{data: {bind: "click: edit, attr: {src: uri}"}}

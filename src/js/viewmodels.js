@@ -77,6 +77,9 @@ function MainViewModel() {
 
   self.currentPage = ko.observable(self.pages()[0]);
 
+  self.currentPhoto = ko.observable();
+  self.currentPhotoVisible = false;
+
   self.pageIndex = ko.computed(function() {
     return self.pages().indexOf(self.currentPage());
   });
@@ -112,13 +115,13 @@ function MainViewModel() {
 
   self.photos = ko.observableArray();
 
-  var pictureReturned = function(uri) {
-    self.photos.push(new PhotoViewModel(uri));
+  self.capture = function(source) {
+    capturePhoto(function(uri) {
+      var photo = new PhotoViewModel(uri, self);
+      source.photos.push(photo);
+      photo.edit();
+    });
   };
-
-  self.capture = function() {
-    capturePhoto(pictureReturned);
-  }
 
   return this;
 }
@@ -134,14 +137,6 @@ function RoomViewModel(roomDescription) {
   });
 
   self.photos = ko.observableArray();
-
-  var pictureReturned = function(uri) {
-    self.photos.push(new PhotoViewModel(uri));
-  };
-
-  self.capture = function() {
-    capturePhoto(pictureReturned);
-  }
 
   return this;
 }
@@ -166,12 +161,16 @@ function WhereNextViewModel(navigation) {
   return this;
 }
 
-function PhotoViewModel(uri) {
+function PhotoViewModel(uri, navigation) {
   var self = this;
 
   self.uri = ko.observable(uri);
 
   self.comment = ko.observable();
+
+  self.edit = function() {
+    navigation.currentPhoto(self);
+  }
 
   return this;
 }

@@ -103,6 +103,18 @@ textarea {
 
   .photo {
     height: 150px;
+    cursor: pointer;
+  }
+}
+
+#current-photo {
+  textarea {
+    margin-top: 20px;
+  }
+
+  img {
+    max-height: 75%;
+    max-width: 90%;
   }
 }
 

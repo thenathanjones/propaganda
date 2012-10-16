@@ -1,4 +1,4 @@
 #header
   %h2{class: 'room-type', data: {bind: 'text: type'}}
-  %a{data: {bind: 'click: capture'}}
+  %a{data: {bind: 'click: $parent.capture, visible: photos'}}
     .camera
