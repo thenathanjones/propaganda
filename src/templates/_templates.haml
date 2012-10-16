@@ -16,7 +16,7 @@
 
 %script{type: 'text/html', id: 'wherenext'}
   #header
-    %h2{class: 'room-type', data: {bind: 'text: type'}}
+    %h1{class: 'room-type', data: {bind: 'text: type'}}
   %h3 pick a room...
   #actions{data: {bind: 'foreach: rooms'}}
     %a{class: 'new-room', data: {bind: 'click: $parent.addRoom'}}
