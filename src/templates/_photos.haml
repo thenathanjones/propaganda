@@ -1,4 +1,4 @@
-.photos-section{data: {bind: 'visible: photos().length > 0'}}
+.photo-section{data: {bind: 'visible: photos().length > 0'}}
   %label Photos
   .photos{data: {bind: "foreach: photos"}}
     %img.photo{data: {bind: "click: edit, attr: {src: uri}"}}

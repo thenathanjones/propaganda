@@ -1,6 +1,6 @@
 @import 'fonts';
 
-$footerHeight: 50px;
+$footerHeight: 60px;
 
 body {
   font-family: 'Helvetica Neue', 'Helvetica';
@@ -40,19 +40,8 @@ html, body {
 }
 
 #header {
-  .room-type, .camera {
+  .room-type {
     display: inline-block;
-  }
-
-  .camera {
-    width: 30px;
-    height: 30px;
-    background-image: url('../images/icon-camera.jpeg');
-    background-size: 100%;
-    cursor: pointer;
-
-    margin-top: 5px;
-    margin-left: 15px;
   }
 }
 
@@ -108,29 +97,62 @@ textarea {
 }
 
 #current-photo {
+  text-align: center;
+
   textarea {
-    margin-top: 20px;
+    margin: 20px;
   }
 
   img {
     max-height: 75%;
     max-width: 90%;
   }
+
+  .close {
+    width: 100px;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin: 0 20px; 
+  }
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 #navigation {
   text-align: center;
+  vertical-align: center;
+
   background-color: black;
   color: white;
 
-  .previous, .next {
+  .camera, .previous, .next {
     display: inline-block;
-    width: 25%;
-    height: 100%;
-    margin-left: 30px;
-    margin-right: 30px;
-    font-size: 30px;
-    font-weight: bold;
+
+    width: 45px;
+    height: 45px;
+
+    background-size: 100%;
+
     cursor: pointer;
+
+    margin: 8px 50px 0px 50px;
+  }
+
+  .camera {
+    background-image: url('../images/icon-camera.jpeg');
+  }
+
+  .previous {
+    background-image: url('../images/arrow-left.png');
+  }
+
+  .next {
+    background-image: url('../images/arrow-right.png');
   }
 }

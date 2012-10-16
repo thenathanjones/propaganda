@@ -7,7 +7,6 @@
   %script{type: 'text/javascript', src: 'js/lib/knockout-2.1.0.js'}
   %script{type: 'text/javascript', src: 'js/lib/jquery-1.8.2.min.js'}
   %script{type: 'text/javascript', src: 'js/lib/jquery.autosize-min.js'}
-  %script{type: 'text/javascript', src: 'js/lib/jquery.fancybox.js'}
   %script{type: 'text/javascript', src: 'js/lib/jquery.mobile.custom.min.js'}
   %script{type: 'text/javascript', src: 'js/camera.js'}
   %script{type: 'text/javascript', src: 'js/viewmodels.js'}
@@ -22,13 +21,4 @@
   #container
     #currentPage{data: {bind: 'template: {name: templateSelector, data: currentPage}'}}
 
-  #navigation
-    .previous{data: {bind: 'click: previousPage, visible: pageIndex() > 0'}, class: 'btn'} <<
-    .next{data: {bind: 'click: nextPage, visible: pageIndex() < pages().length - 1'}, class: 'btn'} >>
-
-  #current-photo{data: {bind: 'with: currentPhoto, visible: currentPhotoVisible'}}
-    .photo
-      %img{data: {bind: 'attr: {src: uri}'}}
-    %textarea{rows: 3, placeholder: 'Comment eg. marks on walls...', data: {bind: 'value: comment'}}
-
-  %a{class: 'fancybox', href: '#current-photo'}
+  = render_partial 'navigation'

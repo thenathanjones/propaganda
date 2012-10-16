@@ -77,9 +77,6 @@ function MainViewModel() {
 
   self.currentPage = ko.observable(self.pages()[0]);
 
-  self.currentPhoto = ko.observable();
-  self.currentPhotoVisible = false;
-
   self.pageIndex = ko.computed(function() {
     return self.pages().indexOf(self.currentPage());
   });
@@ -93,24 +90,18 @@ function MainViewModel() {
     self.currentPage(page);
   }
 
-  self.swipeLeft = function() {
-    if (self.pageIndex() < self.pages().length - 1) {
-      self.nextPage();
-    }
-  }
-
-  self.swipeRight = function() {
-    if (self.pageIndex() > 0) {
-      self.previousPage();
-    }
-  }
-
   self.previousPage = function() {
     goToIndex(self.pageIndex() - 1);
+  }
+  self.canPrevious = function() {
+    return self.pageIndex() > 0;
   }
 
   self.nextPage = function() {
     goToIndex(self.pageIndex() + 1);
+  }
+  self.canNext = function() {
+    return self.pageIndex() < self.pages().length - 1;
   }
 
   self.addPage = function(room, andGo) {
@@ -125,15 +116,17 @@ function MainViewModel() {
 
   self.generalCondition = ["Good", "Average", "Poor", "N/A"]
 
-  self.photos = ko.observableArray();
-
-  self.capture = function(source) {
+  self.capture = function() {
     capturePhoto(function(uri) {
-      var photo = new PhotoViewModel(uri, self);
-      source.photos.push(photo);
+      var photo = new PhotoViewModel(uri, self, self.currentPage());
+      self.currentPage().photos.push(photo);
       photo.edit();
     });
   };
+
+  self.canCapture = ko.computed(function() {
+    return self.currentPage().hasOwnProperty('photos');
+  });
 
   return this;
 }
@@ -173,15 +166,23 @@ function WhereNextViewModel(navigation) {
   return this;
 }
 
-function PhotoViewModel(uri, navigation) {
+function PhotoViewModel(uri, navigation, parent) {
   var self = this;
+
+  self.type = "comments";
+  self.template = "photo";
 
   self.uri = ko.observable(uri);
 
   self.comment = ko.observable();
 
+  self.close = function() {
+    navigation.pages.remove(this);
+    navigation.currentPage(parent);
+  }
+
   self.edit = function() {
-    navigation.currentPhoto(self);
+    navigation.addPage(this, true);
   }
 
   return this;
