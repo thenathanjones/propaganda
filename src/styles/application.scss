@@ -27,18 +27,6 @@ html, body {
   width: 100%;
 }
 
-.new-room {
-  display: block;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 3px;
-  margin: 8px;
-
-  cursor: pointer;
-
-  text-align: center;
-}
-
 #header {
   .room-type {
     display: inline-block;
@@ -71,19 +59,7 @@ h6 {
   font-size: 10px;
 }
 
-label {
-  font-size: 25px;
-  font-weight: normal;
-
-  display: block;
-  margin-top: 20px;
-}
-
 .condition {
-  width: 98%;
-}
-
-textarea {
   width: 98%;
 }
 
@@ -99,24 +75,10 @@ textarea {
 #current-photo {
   text-align: center;
 
-  textarea {
-    margin: 20px;
-  }
-
   img {
-    max-height: 75%;
+    margin-top: 10px;
+    max-height: 60%;
     max-width: 90%;
-  }
-
-  .close {
-    width: 100px;
-    border: 1px solid black;
-    padding: 8px;
-    border-radius: 3px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    margin: 0 20px; 
   }
 }
 
@@ -131,6 +93,8 @@ textarea {
   background-color: black;
   color: white;
 
+  z-index: 10;
+
   .camera, .previous, .next {
     display: inline-block;
 
@@ -141,7 +105,17 @@ textarea {
 
     cursor: pointer;
 
-    margin: 8px 50px 0px 50px;
+    margin-top: 8px;
+  }
+
+  .previous, .next {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .camera {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .camera {
