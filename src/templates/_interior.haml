@@ -1,5 +1,3 @@
-= render_partial 'common'
-
 %label Walls
 %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: walls'}}
 %label Ceiling
@@ -10,6 +8,3 @@
 %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: windows'}}
 %label Electrical Fittings
 %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: electrical'}}
-
-%label General Comments
-%textarea{class: 'autosize', data: {bind: 'value: comments'}}

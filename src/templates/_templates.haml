@@ -1,21 +1,34 @@
 %script{type: 'text/html', id: 'main'}
-  = render_partial 'common'
+  = render_partial 'header'
 
 %script{type: 'text/html', id: 'interior'}
+  = render_partial 'header'
   = render_partial 'interior'
+  %label General Comments
+  %textarea{data: {bind: 'value: comments'}}
+  = render_partial 'photos'
+
+%script{type: 'text/html', id: 'wetarea'}
+  = render_partial 'header'
+  = render_partial 'interior'
+  %label Toilet
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: toilet'}}
+  %label Ventilation
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: ventilation'}}
+  = render_partial 'comments'
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'wherenext'}
   #header
     %h1{class: 'room-type', data: {bind: 'text: type'}}
   %h3 pick a room...
-  #actions{data: {bind: 'foreach: rooms'}}
-    %a{class: 'new-room', data: {bind: 'click: $parent.addRoom'}}
-      %h4{data: {bind: 'text: $data'}}
+  %ul.rooms{data: {bind: 'foreach: rooms', role: 'listview', inset: true}}
+    %li
+      %a{class: 'new-room', data: {bind: 'click: $parent.addRoom, text: $data'}}
 
 %script{type: 'text/html', id: 'photo'}
   #current-photo
     .photo
       %img{data: {bind: 'attr: {src: uri}'}}
-    .close{data: {bind: 'click: close'}} Close
+    %button{data: {bind: 'click: close'}, theme: 'a'} Close
     %textarea{rows: 3, placeholder: 'Comment eg. marks on walls...', data: {bind: 'value: comment'}}
