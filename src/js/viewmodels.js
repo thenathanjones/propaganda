@@ -61,8 +61,8 @@ AVAILABLE_ROOMS = {
                     },
                     'toilet': {
                       type: 'toilet',
-                      template: 'interior',
-                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                      template: 'wetarea',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'toilet', 'ventilation', 'comments']
                     }
                  }
 
