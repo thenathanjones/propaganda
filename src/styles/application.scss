@@ -95,6 +95,11 @@ h6 {
 
   z-index: 10;
 
+  a:active {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
   .camera, .previous, .next {
     display: inline-block;
 
@@ -103,9 +108,9 @@ h6 {
 
     background-size: 100%;
 
-    cursor: pointer;
-
     margin-top: 8px;
+
+    background-repeat: no-repeat;
   }
 
   .previous, .next {
@@ -119,7 +124,7 @@ h6 {
   }
 
   .camera {
-    background-image: url('../images/icon-camera.jpeg');
+    background-image: url('../images/icon-camera.png');
   }
 
   .previous {
