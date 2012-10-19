@@ -1,4 +1,4 @@
-package thenathanjones.photospike;
+package com.warconcepts.propaganda;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
