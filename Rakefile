@@ -27,7 +27,7 @@ namespace :build do
 
   desc "Compile SASS and move to build directory"
   task :sass => "build/styles" do
-    sh "sass --update src/styles"
+    sh "sass --update src/styles/sass:src/styles"
     sh "cp -r src/styles/*.css build/styles"
   end
 
