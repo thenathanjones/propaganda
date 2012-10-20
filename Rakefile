@@ -72,3 +72,28 @@ namespace :droid do
     sh "adb install -r droid/bin/*.apk"
   end
 end
+
+namespace :ios do
+
+  desc "Clean assets for iOS"
+  task :clean do
+    sh "rm -rf ios/www/*"
+  end
+
+  desc "Builds and copies the assets"
+  task :assets => ["clean", "build:all"] do
+    sh "cp -r build/* ios/www"
+  end
+
+  desc "Builds the complete iOS application"
+  task :build => ["assets"] do
+    cd "ios" do
+      sh "echo 'build something'"
+    end
+  end
+
+  desc "Deploy to a running device/emulator"
+  task :deploy => ["build"] do
+    sh "echo 'deploy something'"
+  end
+end
