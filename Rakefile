@@ -17,7 +17,6 @@ namespace :build do
   desc "Clean the temporary artifacts"
   task :clean do
     sh "rm -rf build/*"
-    sh "rm -rf src/**/*.css"
   end
 
   desc "Compile HAML and move to the build directory"
@@ -27,8 +26,7 @@ namespace :build do
 
   desc "Compile SASS and move to build directory"
   task :sass => "build/styles" do
-    sh "sass --update src/styles/sass:src/styles"
-    sh "cp -r src/styles/*.css build/styles"
+    sh "sass --update src/styles:build/styles"
   end
 
   desc "Copy the fonts to the build directory"
