@@ -3,7 +3,9 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require './lib/tasks/haml'
+# require 'xcodebuild'
 
+# XcodeBuild::Tasks::BuildTask.new
 
 task :default => ["build:all"]
 
