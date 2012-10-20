@@ -19,6 +19,8 @@ src/**/*.css
 
 build
 
-/droid/assets/www
+/droid/assets/www/*
 /droid/bin
 /droid/gen
+
+/ios/www/*
