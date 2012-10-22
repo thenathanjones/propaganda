@@ -1,6 +1,20 @@
 %script{type: 'text/html', id: 'main'}
   = render_partial 'header'
 
+%script{type: 'text/html', id: 'front'}
+  = render_partial 'header'
+  %label Driveway
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: driveway'}}
+  %label Letter Box
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: letterbox'}}
+  %label Verge
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: verge'}}
+  %label Drainage
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: drainage'}}
+  %label General Comments
+  %textarea{data: {bind: 'value: comments'}}
+  = render_partial 'photos'
+
 %script{type: 'text/html', id: 'interior'}
   = render_partial 'header'
   = render_partial 'interior'
@@ -8,11 +22,25 @@
   %textarea{data: {bind: 'value: comments'}}
   = render_partial 'photos'
 
-%script{type: 'text/html', id: 'wetarea'}
+%script{type: 'text/html', id: 'toilet'}
   = render_partial 'header'
   = render_partial 'interior'
   %label Toilet
   %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: toilet'}}
+  %label Ventilation
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: ventilation'}}
+  = render_partial 'comments'
+  = render_partial 'photos'
+
+%script{type: 'text/html', id: 'bathroom'}
+  = render_partial 'header'
+  = render_partial 'interior'
+  %label Sink
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: sink'}}
+  %label Bath
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: bath'}}
+  %label Shower
+  %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: shower'}}
   %label Ventilation
   %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: ventilation'}}
   = render_partial 'comments'

@@ -1,4 +1,9 @@
 AVAILABLE_ROOMS = {
+                    'front of house': {
+                      type: 'front of house',
+                      template: 'front',
+                      attributes: ['driveway','wall','letterbox','verge','drainage','comments']
+                    },
                     'entry': {
                       type: 'entry',
                       template: 'interior',
@@ -46,7 +51,7 @@ AVAILABLE_ROOMS = {
                     },
                     'bathroom': {
                       type: 'bathroom',
-                      template: 'interior',
+                      template: 'bathroom',
                       attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
                     },
                     'family room': {
@@ -56,12 +61,12 @@ AVAILABLE_ROOMS = {
                     },
                     'laundry': {
                       type: 'laundry',
-                      template: 'interior',
-                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'comments']
+                      template: 'laundry',
+                      attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'fixtures', 'sink', 'comments']
                     },
                     'toilet': {
                       type: 'toilet',
-                      template: 'wetarea',
+                      template: 'toilet',
                       attributes: ['walls', 'ceiling', 'floor', 'windows', 'electrical', 'toilet', 'ventilation', 'comments']
                     }
                  }
