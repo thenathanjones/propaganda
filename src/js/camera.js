@@ -3,6 +3,7 @@ var destinationType;
 document.addEventListener("deviceready",onDeviceReady,false);
 
 var dummyCapture = function(callback) { callback('file:///Users/thenathanjones/Development/warconcepts/photospike/build/images/icon-camera.jpeg'); };
+
 var cordovaCapture = function(uriCallback) {
   var options = {
                   quality: 100,
