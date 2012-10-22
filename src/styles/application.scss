@@ -2,11 +2,15 @@
 
 $footerHeight: 60px;
 
+$baseHeaderSize: 220%;
+
 body {
   font-family: 'Helvetica Neue', 'Helvetica';
 
   margin-left: 0px;
   margin-right: 0px;
+
+  font-size: 1.3em;
 }
 
 html, body {
@@ -40,23 +44,25 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 45px;
+  font-size: $baseHeaderSize;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: $baseHeaderSize * 0.8;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: $baseHeaderSize * 0.7;
 }
 
 h4 {
-  font-size: 25px;
+  font-size: $baseHeaderSize * 0.6;
 }
 
 h6 {
-  font-size: 10px;
+  font-size: $baseHeaderSize * 0.5;
+}
+
 }
 
 .condition {
