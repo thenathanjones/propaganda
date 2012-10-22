@@ -46,7 +46,7 @@ namespace :build do
     sh "cp -r src/js/* build/js"
   end
 
-  task :all => ["clean", "haml", "sass", "fonts", "images", "js"]
+  task :all => ["clean", "haml", "sass", "fonts", "images", "js", "cordova"]
 
 end
 
@@ -62,8 +62,13 @@ namespace :droid do
     sh "cp -r build/* droid/assets/www"
   end
 
+  desc "Move Cordova shim in place"
+  task :cordova => ["assets"] do
+    sh "cp -r cordova/android.js droid/assets/www/js/lib/cordova.js"
+  end
+
   desc "Builds the complete Android application"
-  task :build => ["assets"] do
+  task :build => ["cordova"] do
     cd "droid" do
       sh "ant clean debug"
     end
@@ -87,8 +92,13 @@ namespace :ios do
     sh "cp -r build/* ios/www"
   end
 
+  desc "Move Cordova shim in place"
+  task :cordova => ["assets"] do
+    sh "cp -r cordova/ios.js ios/www/js/lib/cordova.js"
+  end
+
   desc "Builds the complete iOS application"
-  task :build => ["assets"] do
+  task :build => ["cordova"] do
     cd "ios" do
       sh "echo 'build something'"
     end
