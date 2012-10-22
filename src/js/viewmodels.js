@@ -114,6 +114,11 @@ function MainViewModel() {
     return page ? page.template : 'blank';
   }
 
+  self.afterPageChange = function() {
+    $('#current-page').trigger('create');
+    window.scrollTo(0,0);
+  }
+
   self.generalCondition = ["Good", "Average", "Poor", "N/A"]
 
   self.capture = function() {

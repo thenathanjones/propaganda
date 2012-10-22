@@ -19,6 +19,6 @@
 
 %body
   #container
-    #current-page{data: {bind: 'template: {name: templateSelector, data: currentPage}'}}
+    #current-page{data: {bind: 'template: {name: templateSelector, data: currentPage, afterRender: afterPageChange}'}}
 
   = render_partial 'navigation'
