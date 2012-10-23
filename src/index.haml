@@ -18,6 +18,9 @@
   = render_partial 'templates'
 
 %body
+  #header{data: {bind: 'with: currentPage'}}
+    %h1{class: 'room-type', data: {bind: 'text: type'}}
+
   #container
     #current-page{data: {bind: 'template: {name: templateSelector, data: currentPage, afterRender: afterPageChange}'}}
 

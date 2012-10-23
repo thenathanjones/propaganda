@@ -1,8 +1,6 @@
 %script{type: 'text/html', id: 'main'}
-  = render_partial 'header'
 
 %script{type: 'text/html', id: 'front'}
-  = render_partial 'header'
   %label Driveway
   %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: driveway'}}
   %label Letter Box
@@ -16,14 +14,12 @@
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'interior'}
-  = render_partial 'header'
   = render_partial 'interior'
   %label General Comments
   %textarea{data: {bind: 'value: comments'}}
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'toilet'}
-  = render_partial 'header'
   = render_partial 'interior'
   %label Toilet
   %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: toilet'}}
@@ -33,7 +29,6 @@
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'bathroom'}
-  = render_partial 'header'
   = render_partial 'interior'
   %label Sink
   %select{class: 'condition', data: {bind: 'options: $parent.generalCondition, value: sink'}}
@@ -47,8 +42,6 @@
   = render_partial 'photos'
 
 %script{type: 'text/html', id: 'wherenext'}
-  #header
-    %h1{class: 'room-type', data: {bind: 'text: type'}}
   %h3 pick a room...
   %ul.rooms{data: {bind: 'foreach: rooms', role: 'listview', inset: true}}
     %li

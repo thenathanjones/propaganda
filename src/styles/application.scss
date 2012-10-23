@@ -1,8 +1,11 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+
 @import 'fonts';
 
 $footerHeight: 60px;
 
-$baseHeaderSize: 220%;
+$baseHeaderSize: 200%;
 
 body {
   font-family: 'Helvetica Neue', 'Helvetica';
@@ -10,18 +13,30 @@ body {
   margin-left: 0px;
   margin-right: 0px;
 
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 html, body {
   height: 100%;
 }
 
+#header {
+  padding-left: $gutter / 3;
+
+  .room-type {
+    display: inline-block;
+  }
+}
+
 #container {
-  padding-left: 10px;
-  padding-right: 10px;
+  @include outer-container;
 
   padding-bottom: $footerHeight + 20px;
+
+  #current-page {
+    @include span-columns(10);
+    @include shift(1);
+  }
 }
 
 #navigation {
@@ -29,12 +44,6 @@ html, body {
   bottom: 0;
   height: $footerHeight;
   width: 100%;
-}
-
-#header {
-  .room-type {
-    display: inline-block;
-  }
 }
 
 h1, h2, h3, h4 {
